@@ -9,7 +9,6 @@ function BookList() {
 
     const bookContext = React.useContext(BookContext);
     const { data } = bookContext;
-    console.log(data, "list");
 
     // 
     useEffect(() => {
@@ -27,10 +26,8 @@ function BookList() {
         if (dList) {
             for (let i = 0; i < dList.length; i++) {
                 const element = dList[i];
-                console.log(element, 'doc element');
                 if (element.CID) {
                     await axios.get(`https://${element.CID}.ipfs.infura-ipfs.io/data.json`).then((response) => {
-                        console.log(response, 'doc response');
                         const id = element.objectId;
                         var newData = { ...response.data, id }
                         array.push(newData)
@@ -40,7 +37,6 @@ function BookList() {
         }
         setBookData(array);
     }
-    console.log(bookData, 'newwwwwww');
 
     return (
         <>

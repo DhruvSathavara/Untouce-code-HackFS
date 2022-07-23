@@ -19,7 +19,6 @@ function NewsDetail() {
     }, [isAuthenticated, isInitialized])
 
 
-   console.log(bookDetails.walletAddress); 
 
     return (
         <div  style={{marginTop:"6rem"}} className="container-fluid row">

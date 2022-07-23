@@ -12,9 +12,7 @@ import jsPDF from "jspdf";
 export const BookContext = createContext();
 export const BookContextProvider = (props) => {
     const [Image, setImage] = useState();
-    console.log(Image,'imag in context');
     const [pdf, setPdf] = useState('');
-console.log(pdf,'pdf in context');
 
     const { Moralis, user, account } = useMoralis();
     const { data, fetch } = useMoralisQuery("UntouchedArchieve");
@@ -37,11 +35,9 @@ console.log(pdf,'pdf in context');
             })
                 .then(function (user) {
                     let address = user.get("ethAddress")
-                    console.log(address, "get address");
                     localStorage.setItem("currentUserAddress",address)
                 })
                 .catch(function (error) {
-                    console.log(error);
                 });
 
         }
@@ -49,7 +45,6 @@ console.log(pdf,'pdf in context');
 
 
     function addData(Item) {
-        console.log(Item, "Item")
         const blob = new Blob(
             [
                 JSON.stringify(Item),
@@ -59,7 +54,6 @@ console.log(pdf,'pdf in context');
         const files = [
             new File([blob], "data.json"),
         ];
-        console.log(files);
         return files;
 
     }
@@ -68,29 +62,24 @@ console.log(pdf,'pdf in context');
 
         // TO GET CURRENT USER WALLET ADDRESS
         let currentUser = login()
-        console.log(currentUser, 'current user login')
         const Cuser = Moralis.User.current(currentUser)
         UntoucheDdata.set("Current_User", user)
-        console.log(Cuser, 'cuser...');
 
 
         let files = addData(Item)
         const cid = await client.put(files);
         UntoucheDdata.set("CID", cid);
         UntoucheDdata.save();
-        console.log("stored files with cid", cid);
         axios.get(`https://${cid}.ipfs.infura-ipfs.io/data.json`)
             .then(function (response) {
                 array.push(response.data);
                 setData(array);
             })
             .catch(function (error) {
-                console.log(error);
             })
 
         return cid;
     }
-    console.log(NewData);
 
 
     async function getBookDetails(params) {
@@ -105,7 +94,6 @@ console.log(pdf,'pdf in context');
                     setBookDetails(response.data)
                 })
                 .catch(function (error) {
-                    console.log(error);
                 })
         }
     }
@@ -114,7 +102,6 @@ console.log(pdf,'pdf in context');
     // ------------MAHIMA'CODE
 
 async function storeFile(file) {
-    console.log(file.name, "StoreFiles");
        const ext = file.name.split('.').pop();
 
      const fileName = `${uuidv4()}.${ext}`;
@@ -122,22 +109,17 @@ async function storeFile(file) {
      const cid = await client.put([newFile], {
          name: fileName,
      });
-     console.log(cid,"cid from storeFile")
      const imageURI = `https://${cid}.ipfs.dweb.link/${fileName}`;
-     console.log(imageURI, "imageURI from storeFiles");
      setImage(imageURI);
     //  const blob = new Blob([JSON.stringify({file:imageURI})], { type: "application/json" });
     //  const files = [new File([blob], "file.json")];
     //  setImage(imageURI)
-    //  console.log(files);
      return imageURI;
 }
-console.log(Image);
 
 
 
 async function storePdfFile(file){
-    console.log(file.name, "storePdfFile");
     const ext = file.name.split('.').pop();
   
   const fileName = `${uuidv4()}.${ext}`;
@@ -145,12 +127,9 @@ async function storePdfFile(file){
   const cid = await client.put([newFile], {
     name: fileName,
   });
-  console.log(cid,"cid from storePdfFile")
   const pdfURI = `https://${cid}.ipfs.dweb.link/${fileName}`;
-  console.log(pdfURI, "pdfURI from storePdfFile");
 //   const blob = new Blob([JSON.stringify({file : pdfURI})], { type: "application/json" });
 //   const files = [new File([blob], "pdf.json")];
-//   console.log(files);
   setPdf(pdfURI)
   
   

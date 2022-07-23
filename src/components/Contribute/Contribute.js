@@ -17,11 +17,9 @@ import axios from 'axios';
 
 
 export default function ModalContribute(props) {
-  console.log(props.walletAddress);
   const { Moralis, isAuthenticated, isInitialized } = useMoralis();
 
   const params = useParams();
-  console.log(params.id);
 
   React.useEffect(() => {
     getReviews(params)
@@ -57,7 +55,6 @@ export default function ModalContribute(props) {
     const files = [
       new File([blob], "data.json")
     ];
-    console.log(files);
     return files;
   }
 
@@ -70,7 +67,6 @@ export default function ModalContribute(props) {
     await reviewsData.save();
     setLoading(false);
     setIsUpdated(!isUpdated)
-    console.log("stored Reviews with cid", cid);
    handleClose();
   }
   // GETTING REVIEWS 
@@ -90,14 +86,12 @@ export default function ModalContribute(props) {
            
           })
           .catch(function (error) {
-            console.log(error);
           })
        })
        setAllReviews(array)
       }
     }
   }
-  console.log(allReviews, 'receve reviews');
 
   const handleGift = (e) => {
     setGift(e.target.value)
@@ -116,7 +110,6 @@ export default function ModalContribute(props) {
   async function onAddClick(e) {
     e.preventDefault();
     setLoading(true)
-    console.log('review ok');
   let transaction =  await TransferEth();
  
   if(transaction){
@@ -126,7 +119,6 @@ export default function ModalContribute(props) {
   }
 
   const TransferEth = async () => {
-    console.log(receiverAddress, 'receve addes');
     await Moralis.enableWeb3();
     const options = {
       type: "native",

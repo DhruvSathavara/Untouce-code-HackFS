@@ -16,7 +16,6 @@ function WebsiteDetail() {
     }, [isAuthenticated, isInitialized])
 
 
-    console.log(bookDetails.walletAddress);
 
     return (
         <div className="container-fluid row">

@@ -8,11 +8,9 @@ function BookList() {
 
     const bookContext = React.useContext(BookContext);
     const { data } = bookContext;
-console.log(data,'data');
 
     useEffect(() => {
         const bList = JSON.parse(JSON.stringify(data));
-        console.log(bList,'bList data');
         if (bList) {
             ListBookData(bList)
         }
@@ -27,10 +25,8 @@ console.log(data,'data');
         if (bList) {
             for (let index = 0; index < bList.length; index++) {
                 const element = bList[index];
-                console.log(element, "book element");
                 if (element.CID) {
                     await axios.get(`https://${element.CID}.ipfs.infura-ipfs.io/data.json`).then((response) => {
-                        console.log(response, "response");
                         const id = element.objectId;
                         var newData = { ...response.data, id };
                         array.push(newData);
@@ -42,7 +38,6 @@ console.log(data,'data');
         setBookData(array);
     }
 
-    console.log(bookData, 'newwwwwww');
 
     return (
         <>
@@ -55,7 +50,6 @@ console.log(data,'data');
 
                     {
                         bookData && bookData.map((e) => {
-                            { console.log(e, e.objectId) }
                             if (e.category == "Book") {
                                 return (
                                     <div className="card col-3 offset-1">

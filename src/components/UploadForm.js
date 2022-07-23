@@ -27,7 +27,6 @@ const {Moralis,account,isAuthenticated} = useMoralis();
         setName(e.target.value)
     }
     if(isAuthenticated){
-        console.log(account,'account');
     }
     const subjectEvent = (e) => {
         setSubject(e.target.value || null)
@@ -45,14 +44,12 @@ const {Moralis,account,isAuthenticated} = useMoralis();
         const file = e.target.files[0];
       var url = await storeFile(file);
       setCoverPic(url);
-    console.log(url,'url ');
     }
 
     async function PdfStore(e){
         const file = e.target.files[0];
        var pdf = await storePdfFile(file);
        setFile(pdf);
-       console.log(pdf,'pdf in upload');
     }
 
     const checkboxEvent = (e) => {
@@ -70,8 +67,6 @@ const {Moralis,account,isAuthenticated} = useMoralis();
         checkbox: checkbox,
         walletAddress:localStorage.getItem("currentUserAddress")
     }
-  console.log(Item,"items");
-console.log(Image,'in uploadS')
 
     
     function onFormSubmit(e) {

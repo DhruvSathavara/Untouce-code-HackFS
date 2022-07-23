@@ -9,11 +9,9 @@ function NewspaperSlider() {
 
   const bookContext = React.useContext(BookContext);
   const { data } = bookContext;
-  console.log(data, 'data');
 
   useEffect(() => {
     const bList = JSON.parse(JSON.stringify(data));
-    console.log(bList, 'bList data');
     if (bList) {
       ListBookData(bList)
     }
@@ -27,10 +25,8 @@ function NewspaperSlider() {
     if (bList) {
       for (let index = 0; index < bList.length; index++) {
         const element = bList[index];
-        console.log(element, "book element");
         if (element.CID) {
           await axios.get(`https://${element.CID}.ipfs.infura-ipfs.io/data.json`).then((response) => {
-            console.log(response, "response");
             var newData = { ...response.data };
             array.push(newData);
           });
@@ -39,7 +35,6 @@ function NewspaperSlider() {
     }
     setBookData(array);
   }
-  console.log(bookData)
 
   return (
     <div style={{ height: '16rem',marginTop:"350px" }} className="container ">
@@ -55,10 +50,8 @@ function NewspaperSlider() {
 {
 
 bookData && bookData.map((e,i) => {
-  console.log(e, 'bookData in slider');
   if (e.category == "Newspaper" && count < 12) {
     count++;
-    console.log(count, 'current count')
     return (<div key={i} className='col-md-3 col-sm-4 col-lg-2 col-12'>
       <Box
         sx={{

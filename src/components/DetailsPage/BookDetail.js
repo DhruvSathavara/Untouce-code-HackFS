@@ -20,7 +20,6 @@ function BookDetail() {
     }, [isAuthenticated, isInitialized])
 
 
-   console.log(bookDetails.walletAddress); 
 
 
     return (
