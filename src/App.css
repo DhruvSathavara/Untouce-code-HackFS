@@ -87,13 +87,14 @@
 } */
 
 /* -------------------------------CATEGORIES ----------------------*/
-.card {
-  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
-  /* transition: 0.3s; */
+/* .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
   width: 30%;
   height: 30%;
 
-}
+} */
+
 .icon-name{
   font-weight: 300;
   /* text-shadow: -1px 0 #12e4c2, 0 1px #964b4b, 1px 0 black, 0 -1px #b1afdb; */
@@ -334,7 +335,7 @@ label .terms-checkbox{
   border-radius: 8px 8px 8px 8px;
   margin-top: 20px;
   margin-bottom: 32px;
-  height: 23%;
+  /* height: 23%; */
   width: 312px;
   border: 1px solid black;
 }
@@ -497,7 +498,7 @@ div .review-section{
 }  
 
  #footer {
-  margin-top: 29rem !important;
+  /* margin-top: 29rem !important; */
   background-color: 
   rgb(242, 242, 242);
   
@@ -510,7 +511,7 @@ div .review-section{
   padding: 10px!important;
   text-align: center;
   font-family: "Roboto Condensed";
-  margin-top: 31% !important;
+  /* margin-top: 31% !important; */
   word-spacing: 3px;
   letter-spacing: 3px;
 }

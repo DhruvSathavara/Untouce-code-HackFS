@@ -37,10 +37,10 @@ function WebsiteSlider() {
   }
 
   return (
-    <div style={{ height: '16rem',marginTop:"350px" }} className="container ">
+    <div className="container mt-4">
       <div className='title-box'>
         <h3>Websites</h3>
-        <div style={{ marginLeft: "42%" }} className='under-line col-2'></div>
+        <div   className='under-line col-2 m-auto'></div>
       </div>
       <Grid container justifyContent="center">
 

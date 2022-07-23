@@ -42,8 +42,8 @@ function BookList() {
     return (
         <>
 
-            <div style={{ backgroundColor: "bisque" }} className="row container-fluid">
-                <div className="section-title">
+            <div style={{ backgroundColor: "bisque" }} className="row container-fluid mt-4">
+                <div className="section-title mt-5">
                     <h4>Related posts</h4>
                 </div>
                 <div className="main-div row container-fluid">

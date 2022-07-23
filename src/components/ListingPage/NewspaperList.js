@@ -49,7 +49,7 @@ function BookList() {
                         bookData && bookData.map((e) => {
                             if(e.category == "Newspaper"){
                           return   (
-                            <div style={{height:"33%"}} className="card col-3 offset-1">
+                            <div className="card col-3 offset-1">
                             <div className="row">
                                 <img className="book-images" src={e.coverPicture}></img>
                             </div>
