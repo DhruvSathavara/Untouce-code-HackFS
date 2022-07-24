@@ -67,7 +67,7 @@ const {Moralis,account,isAuthenticated} = useMoralis();
         checkbox: checkbox,
         walletAddress:localStorage.getItem("currentUserAddress")
     }
-
+console.log(localStorage.getItem("currentUserAddress"))
     
     function onFormSubmit(e) {
         e.preventDefault() 
