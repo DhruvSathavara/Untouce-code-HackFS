@@ -40,7 +40,49 @@ Untouched Archive - is a decentralized and censorship proof solution to archive.
 
 ![screenshot (4)](https://user-images.githubusercontent.com/96543964/180706933-12fefc5e-3d04-4fc5-80f6-3b2bef7e383d.png)
 
+### IPFS & Filecoin
 
+https://github.com/DhruvSathavara/Untouce-code-HackFS/blob/master/Filecoin.md
+
+```
+  function addData(Item) {
+        const blob = new Blob(
+            [
+                JSON.stringify(Item),
+            ],
+            { type: "application/json" }
+        );
+        const files = [
+            new File([blob], "data.json"),
+        ];
+        return files;
+
+    }
+    async function storeFiles(Item) {
+        var array = [];
+
+        // TO GET CURRENT USER WALLET ADDRESS
+        let currentUser = login()
+        const Cuser = Moralis.User.current(currentUser)
+        UntoucheDdata.set("Current_User", user)
+
+
+        let files = addData(Item)
+        const cid = await client.put(files);
+        UntoucheDdata.set("CID", cid);
+        UntoucheDdata.save();
+        axios.get(`https://${cid}.ipfs.infura-ipfs.io/data.json`)
+            .then(function (response) {
+                array.push(response.data);
+                setData(array);
+            })
+            .catch(function (error) {
+            })
+
+        return cid;
+    }
+
+```
 
 
 
